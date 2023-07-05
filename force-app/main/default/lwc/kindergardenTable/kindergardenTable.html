@@ -1,0 +1,37 @@
+<!--
+  @description       : 
+  @author            : Woolim Ko
+  @group             : Trestle
+  @last modified on  : 07-04-2023
+  @last modified by  : Woolim Ko
+-->
+<template>
+    <lightning-card title="유치원 확인하기" icon-name="utility:smiley_and_people">
+        <div class="slds-m-around_x-small">
+            <div class="slds-grid">
+                <lightning-combobox label="시도 코드" class="sidoCode slds-col slds-p-right_x-small" value={sidoCode}
+                    placeholder="서울특별시" options={options} onchange={handleChangeSido}></lightning-combobox>
+                <template if:true={ssgDataSize}>
+                    <lightning-combobox label="시군구 코드" class="sggCode slds-col" value={sggCode} placeholder='--None--'
+                        options={ssgCodeOptionsData} onchange={handleChangeSgg}></lightning-combobox>
+                </template>
+            </div> <br>
+            <template if:false={displayResult}>
+                <div class="slds-align_absolute-center">
+                    <h1>❌ 해당하는 결과가 없습니다. ❌</h1>
+                </div>
+            </template>
+
+            <template if:true={displayResult}>
+                <lightning-datatable key-field="key" data={displayResult} columns={columns} hide-checkbox-column
+                    show-row-number-column>
+                </lightning-datatable>
+                <br>
+            </template>
+
+            <lightning-button variant="brand" label={clickedButtonLabel} title="Show Only Ten" onclick={handleClick}
+                class="slds-align_absolute-center"></lightning-button>
+
+        </div>
+    </lightning-card>
+</template>

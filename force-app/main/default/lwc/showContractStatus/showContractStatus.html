@@ -1,0 +1,14 @@
+<!--
+  @description       : 
+  @author            : Woolim Ko
+  @group             : Trestle
+  @last modified on  : 06-19-2023
+  @last modified by  : Woolim Ko
+-->
+<template>
+    <div class="slds-box" style="background-color: rgb(231, 243, 255);" if:true={contract}>
+        <span class="slds-m-right_medium slds-text-heading_small">{_StatusCode}</span>
+        <b class="slds-text-heading_small" style="color: rgb(49, 129, 242);">
+            {contract.Status} 상태 입니다. (일시 : {_Dates}) </b>
+    </div>
+</template>

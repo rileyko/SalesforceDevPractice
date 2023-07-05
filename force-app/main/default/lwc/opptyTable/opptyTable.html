@@ -1,0 +1,48 @@
+<!--
+  @description       : 
+  @author            : Woolim Ko
+  @group             : Trestle
+  @last modified on  : 06-28-2023
+  @last modified by  : Woolim Ko
+-->
+
+<template>
+    <lightning-card title="Oppties" icon-name="standard:opportunity">
+        <!-- 검색 -->
+        <div class="slds-grid slds-wrap" id="woolim">
+            <div class="slds-col slds-size_1-of-5">
+                <c-oppty-filter search-keyword={searchKeyword} selected-stage={selectedStage}
+                    onkeyword={handleSearchKeyChange} onstagename={handleStageNameChange}></c-oppty-filter>
+            </div>
+
+            <div class="slds-col slds-size_4-of-5">
+                <!-- 레코드 리스트 -->
+                <div class="slds-m-around_medium">
+                    <template if:true={isLoaded}>
+                        <!-- Spinner -->
+                        <div class="slds-align_absolute-center">
+                            <img src={imgSrc} class="shaking">
+                        </div>
+                    </template>
+                    <template if:false={isLoaded}>
+                        <lightning-datatable key-field="Id" data={opptyList} columns={columns} sorted-by={sortBy}
+                            sorted-direction={sortDirection} onsort={doSorting} hide-checkbox-column
+                            show-row-number-column onsave={saveHandleAction} draft-values={fldsItemValues}>
+                        </lightning-datatable>
+                    </template>
+                    <template if:true={error}>
+                        <div class="slds-text-color_error">
+                            An error occurred while loading the oppty list
+                        </div>
+                    </template>
+                    <br />
+                    <!-- Paginator -->
+                    <c-paginator onprevious={previousHandler2} onnext={nextHandler2} onselected={changeHandler2}
+                        onfirstpage={firstpagehandler2} onlastpage={lastpagehandler2} total-oppty={totalOppty}
+                        page-number={pageNumber} total-page-num={totalPageNum} page-size={pageSize}></c-paginator>
+                </div>
+            </div>
+        </div>
+
+    </lightning-card>
+</template>

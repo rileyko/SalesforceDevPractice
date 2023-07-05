@@ -1,0 +1,38 @@
+<!--
+  @description       : 
+  @author            : Woolim Ko
+  @group             : Trestle
+  @last modified on  : 06-20-2023
+  @last modified by  : Woolim Ko
+-->
+<template>
+    <lightning-layout>
+        <lightning-layout-item>
+            <lightning-layout-item>
+                <lightning-button class="First Page" label="First Page" icon-name="utility:chevronleft"
+                    onclick={FirstPageHandler1}></lightning-button>
+            </lightning-layout-item>
+            <lightning-button class="Previous" label="Previous" icon-name="utility:chevronleft"
+                onclick={previousHandler1}></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item>
+            <select class="slds-select slds-text-color_success" name="optionSelect" onchange={changeHandler}>
+                <option value="">Page size</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+            </select>
+        </lightning-layout-item>
+        <span class="slds-m-around_x-small"> {totalOppty} items • page {pageNumber} of {totalPages} </span>
+        <lightning-layout-item flexibility="grow"></lightning-layout-item>
+        <lightning-layout-item>
+            <lightning-button class="Next" label="Next" icon-name="utility:chevronright" icon-position="right"
+                onclick={nextHandler1}></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item>
+            <lightning-button class="Last Page" label="LastPage" icon-name="utility:chevronright" icon-position="right"
+                onclick={LastPageHandler1}></lightning-button>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

@@ -1,0 +1,20 @@
+<!--
+  @description       : 
+  @author            : Woolim Ko
+  @group             : Trestle
+  @last modified on  : 06-26-2023
+  @last modified by  : Woolim Ko
+-->
+<template>
+    <div class="slds-var-m-horizontal_medium">
+        <lightning-input label="Search Key" class="searchKeyword" type="search"
+            onchange={handleSearchKeyChange}></lightning-input>
+        <template if:true={picklistValues}>
+            <lightning-combobox class="selectedStage" label="stage" value={selectedStage} placeholder="-Select-"
+                options={picklistValues} onchange={handleStageNameChange}>
+            </lightning-combobox>
+        </template><br />
+        키워드 : <b>{searchKeyword}</b><br /><br />
+        단계 : <b>{selectedStage}</b><br /><br />
+    </div>
+</template>
